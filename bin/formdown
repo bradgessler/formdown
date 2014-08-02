@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'formdown/cli'
+
+Formdown::CLI.start
