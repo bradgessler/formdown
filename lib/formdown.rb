@@ -78,7 +78,8 @@ module Formdown
 end
 
 # Work around to get this build passing for Ruby 1.9 since the kramdown Parser.const_get()
-# TODO - Patch kramdown to work with nested namespaces in Ruby 1.9
+# TODO - Patch kramdown to work with nested namespaces in Ruby 1.9.
+# Details about the issue noted at https://github.com/gettalong/kramdown/commit/cd5423f23eb783a2c435e8545a98625cb280f286#diff-1f46a84d29e6ac9751ae5d75bafc25aeR88
 FormdownParser = Formdown::Parser
 
 module Formdown
