@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bradgessler/formdown.svg?branch=master)](https://travis-ci.org/bradgessler/formdown)
+
 # Formdown
 
 Build HTML forms with the simplicity of [Markdown](http://daringfireball.net/projects/markdown/). In other words, markdown like:
