@@ -75,10 +75,16 @@ module Formdown
     end
     define_parser(:buttons, BUTTON_START, '\[')
   end
+end
 
+# Work around to get this build passing for Ruby 1.9 since the kramdown Parser.const_get()
+# TODO - Patch kramdown to work with nested namespaces in Ruby 1.9
+FormdownParser = Formdown::Parser
+
+module Formdown
   class Renderer
     def initialize(content)
-      @document = ::Kramdown::Document.new(content, input: ::Formdown::Parser)
+      @document = ::Kramdown::Document.new(content, input: 'FormdownParser')
     end
 
     def to_html
