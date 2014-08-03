@@ -16,4 +16,4 @@ module ActionView
 end
 
 # Register in the rails stack.
-ActionView::Template.register_template_handler(:fmd, ActionView::Template::Handlers::Formdown.new)
+ActionView::Template.register_template_handler(*Formdown::FILE_EXTENSIONS, ActionView::Template::Handlers::Formdown.new)
