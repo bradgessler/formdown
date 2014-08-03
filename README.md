@@ -97,7 +97,7 @@ Its recommended to use a layout around the Formdown file to handle the form subm
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/formdown/fork )
+1. Fork it ( https://github.com/bradgessler/formdown/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
