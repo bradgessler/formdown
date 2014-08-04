@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require 'formdown/tilt'
+require 'tilt/formdown'
 
 module Sinatra
   module Formdown
