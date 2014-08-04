@@ -95,6 +95,24 @@ Its recommended to use a layout around the Formdown file to handle the form subm
 
 **Note**: There's currently no simple way of mapping Formdown fields to ActiveRecord model attributes.
 
+### Sinatra
+
+In the Gemfile, include the formdown gem via:
+
+```ruby
+gem "formdown", require: "sinatra/formdown"
+```
+
+Place your Formdown file in the [Sinatra](http://www.sinatrarb.com/) `./views` directory (e.g. `views/my_form.html.fmd`), then add the following route to your Sinatra app:
+
+```ruby
+get '/my_form' do
+  formdown :my_form
+end
+```
+
+and the form will render at `/my_form`.
+
 ### Middleman
 
 In the Gemfile, include the formdown gem via:
