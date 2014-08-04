@@ -118,10 +118,10 @@ and the form will render at `/my_form`.
 In the Gemfile, include the formdown gem via:
 
 ```ruby
-gem "formdown", require: "formdown/tilt"
+gem "formdown", require: "middleman/formdown"
 ```
 
-Place your Formdown file in the [Middleman](http://middlemanapp.com/) source directory and the form will render (e.g. `source/my_form.html.fmd` will render the form at `/my_form.html`)
+Place your Formdown file in the [Middleman](http://middlemanapp.com/) `./source` directory and the form will render (e.g. `source/my_form.html.fmd` will render the form at `/my_form.html`)
 
 ## Contributing
 
