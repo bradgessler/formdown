@@ -10,4 +10,9 @@ class Formdown::CLI < Thor
       puts Formdown::Renderer.new($stdin.read).to_html 
     end
   end
+
+  desc "version", "Print the version of formdown"
+  def version
+    puts Formdown::VERSION
+  end
 end
