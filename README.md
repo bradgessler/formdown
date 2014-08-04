@@ -39,47 +39,9 @@ Generates the following HTML:
 
 A more extensive reference of Formdown in action may be found in the [kitchen sink](./spec/fixtures/kitchen_sink.fmd) fmd file. As this gem matures more extensive syntax documentation will be created for version 1.0.
 
-## Installation
+## Installation & Usage
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'formdown'
-```
-
-or for Rails:
-
-```ruby
-gem 'formdown', require: 'formdown/rails'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install formdown
-
-## Usage
-
-### CLI
-
-The quickest way to render Formdown is via the command line. Just cat your file into the render and you'll get HTML:
-
-```sh
-$ cat my_form.fmd | formdown render > my_form.html
-```
-
-Now open `my_form.html` and enjoy all of that HTML goodness.
-
-### Ruby
-
-```ruby
-text = "What is your email address? _________@(Email)"
-formdown = Formdown::Renderer.new(text)
-formdown.to_html # => "<p>What is your email address?   <input type=\"email\" placeholder=\"Email\" name=\"Email\" size=\"9\"></input>\n</p>\n"
-```
+Formdown works in most popular Ruby web frameworks, the command lin, and of course plain 'ol Ruby.
 
 ### Rails
 
@@ -122,6 +84,40 @@ gem "formdown", require: "middleman/formdown"
 ```
 
 Place your Formdown file in the [Middleman](http://middlemanapp.com/) `./source` directory and the form will render (e.g. `source/my_form.html.fmd` will render the form at `/my_form.html`)
+
+### Command line
+
+Install the gem:
+
+    $ gem install formdown
+
+The quickest way to render Formdown is via the command line. Just cat your file into the render and you'll get HTML:
+
+```sh
+$ cat my_form.fmd | formdown render > my_form.html
+```
+
+Now open `my_form.html` and enjoy all of that HTML goodness.
+
+### Ruby
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'formdown'
+```
+
+And then execute:
+
+    $ bundle
+
+Write the following code in your Ruby application to compile the Formdown:
+
+```ruby
+text = "What is your email address? _________@(Email)"
+formdown = Formdown::Renderer.new(text)
+formdown.to_html # => "<p>What is your email address?   <input type=\"email\" placeholder=\"Email\" name=\"Email\" size=\"9\"></input>\n</p>\n"
+```
 
 ## Contributing
 
