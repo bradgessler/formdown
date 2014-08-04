@@ -89,11 +89,21 @@ In the rails Gemfile, include the formdown gem via:
 gem "formdown", require: "formdown/rails"
 ```
 
-Rails will pick up files with the extension `.fmd` and render them as HTML. For example, `app/views/user/my_form.fmd.html` would render the formdown document.
+Rails will pick up files with the extension `.fmd` and render them as HTML. For example, `app/views/user/my_form.html.fmd` would render the formdown document.
 
 Its recommended to use a layout around the Formdown file to handle the form submission action and surrounding HTML content.
 
 **Note**: There's currently no simple way of mapping Formdown fields to ActiveRecord model attributes.
+
+### Middleman
+
+In the Gemfile, include the formdown gem via:
+
+```ruby
+gem "formdown", require: "formdown/tilt"
+```
+
+Place your Formdown file in the [Middleman](http://middlemanapp.com/) source directory and the form will render (e.g. `source/my_form.html.fmd` will render the form at `/my_form.html`)
 
 ## Contributing
 
