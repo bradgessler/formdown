@@ -2,9 +2,13 @@
 
 # Formdown
 
-Build HTML forms with the simplicity of [Markdown](http://daringfireball.net/projects/markdown/). In other words, markdown like:
+Formdown is a way to create documents that need form elements such as contracts, tax filings, sign-up pages, business forms, etc. Based on [Markdown](http://daringfireball.net/projects/markdown/), it puts an emphasis on readability and ease of authoring by humans in a plain text format that can be saved as a file and tracked by a version control system or easily shared. The content-focused nature of Formdown forces a separation of presentation that makes the resulting HTML web forms more accessible and responsive to a wider number of people with different disabilities or devices.
 
-```markdown
+## Example
+
+The Formdown document:
+
+```
 Hi _________(Name)
 
 How are you doing today? () Good () Ok () Bad
