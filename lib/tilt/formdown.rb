@@ -16,7 +16,7 @@ module Tilt
     def prepare
       # options[:smart_quotes] = DUMB_QUOTES unless options[:smartypants]
       # @engine = Formdown::Document.new(data, options)
-      @engine = Formdown::Renderer.new(data)
+      @engine = Formdown::TemplateRenderer.new(data, @options)
       @output = nil
     end
 
