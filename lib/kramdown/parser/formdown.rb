@@ -29,7 +29,7 @@ module Kramdown
         end
         @tree.children << Element.new(:html_element, :input, type: type, placeholder: placeholder, name: placeholder, size: line.size)
       end
-      define_parser(:text_fields, TEXT_FIELD_START, '_{')
+      define_parser(:text_fields, TEXT_FIELD_START)
 
 
       TEXT_AREA_START = /(_+)(\/+)\((.+?)\)/
@@ -39,7 +39,7 @@ module Kramdown
         col, rows, placeholder = TEXT_AREA_START.match(@src.matched).captures
         @tree.children << Element.new(:html_element, :textarea, placeholder: placeholder, name: placeholder, cols: col.size, rows: rows.size)
       end
-      define_parser(:text_areas, TEXT_AREA_START, '_/')
+      define_parser(:text_areas, TEXT_AREA_START)
 
 
       CHECKBOX_FIELD_START = /\[([\sxX])?\]/
@@ -48,7 +48,7 @@ module Kramdown
         @src.pos += @src.matched_size
         @tree.children << Element.new(:html_element, :input, type: :checkbox)
       end
-      define_parser(:checkboxes, CHECKBOX_FIELD_START, '\[')
+      define_parser(:checkboxes, CHECKBOX_FIELD_START)
 
       RADIO_BUTTON_FIELD_START = /\(([\sxX])?\)/
 
@@ -56,7 +56,7 @@ module Kramdown
         @src.pos += @src.matched_size
         @tree.children << Element.new(:html_element, :input, type: :radio)
       end
-      define_parser(:radio_buttons, RADIO_BUTTON_FIELD_START, '\(')
+      define_parser(:radio_buttons, RADIO_BUTTON_FIELD_START)
 
       BUTTON_START = /\[\s(.+)\s\]([\!])?/
 
@@ -70,7 +70,7 @@ module Kramdown
         end
         @tree.children << Element.new(:html_element, :input, type: type, value: value)
       end
-      define_parser(:buttons, BUTTON_START, '\[')
+      define_parser(:buttons, BUTTON_START)
     end
   end
 end
