@@ -1,3 +1,4 @@
+require 'kramdown'
 require 'kramdown/parser/kramdown'
 
 # Formdown extends the Markdown language with practical HTML form builder syntax.

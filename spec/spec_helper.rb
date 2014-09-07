@@ -1,6 +1,15 @@
+# TODO - Figure out why I have to require this in the spec helper to get individual
+# specs in `spec/lib/kramdown/parser/*_spec.rb` working.
+require 'kramdown'
+require 'kramdown/parser/formdown'
+
 require 'formdown'
 
 RSpec.configure do |config|
+  # Register helpers with Rspec suite.
+  require_relative 'helpers/renderer'
+  config.include Formdown::Spec::Helpers
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
