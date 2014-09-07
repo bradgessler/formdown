@@ -1,7 +1,7 @@
 module Kramdown
   module Parser
     class Formdown < Kramdown::Parser::Kramdown
-      RADIO_BUTTON_FIELD_START = /\(([\sxX])?\)/
+      RADIO_BUTTON_FIELD_START = /\(([\sxX*])?\)/
 
       def parse_radio_buttons
         @src.pos += @src.matched_size

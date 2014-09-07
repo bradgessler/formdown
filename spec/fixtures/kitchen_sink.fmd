@@ -4,12 +4,19 @@ How are you doing today? () Good () OK () Bad
 
 Please elaborate on those feelings: __________///(Description)
 
-Why do you think you feel that way?
+Why do you think you feel that way? Pick any:
 
 [] Because I accidentally swallowed a bug
 [] Its sunny outside
 [] I'm stuck under a cloud of fog
 [] I just ate a Twinkie and they're delicious!
+
+What would you rather do? Pick one:
+
+() Eat a potato
+(*) Smack my head into the wall
+() Dive off a cliff
+() Jump up and down frantically
 
 How many times did you sneeze today? __#(Sneezes)
 
