@@ -2,15 +2,15 @@ require 'spec_helper'
 
 describe Kramdown::Parser::Formdown do
   context "regexp" do
-    context "RADIO_BUTTON_FIELD_START" do
-      subject { Kramdown::Parser::Formdown::RADIO_BUTTON_FIELD_START }
+    context "OPTIONS_FIELD_RADIO_INPUT" do
+      subject { Kramdown::Parser::Formdown::OPTIONS_FIELD_RADIO_INPUT }
       it "matches () for start of radio button" do
         expect("(*) One".match(subject).captures).to match([])
       end
     end
 
-    context "RADIO_BUTTON_FIELD_LABEL" do
-      subject { Kramdown::Parser::Formdown::RADIO_BUTTON_FIELD_LABEL }
+    context "OPTIONS_FIELD_LABEL" do
+      subject { Kramdown::Parser::Formdown::OPTIONS_FIELD_LABEL }
 
       it "matches radio button label to end of line" do
         expect(" One\n Two ()".match(subject).captures).to match([" One"])
@@ -22,14 +22,30 @@ describe Kramdown::Parser::Formdown do
     end
   end
 
-  context "radio button" do
-    subject { html 'radio.fmd' }
+  context "rendering" do
     let(:options) do 
       ['Eat a potato', 'Bang my head against the wall', 'Do jumping jacks']
     end
 
-    context "single line" do
-      it "renders radio button input" do
+    context "check boxes" do
+      subject { html 'checkboxes.fmd' }
+
+      it "renders checkbox input" do
+        options.each.with_index do |option, idx|
+          expect(subject).to include(%(<input type="checkbox" id="checkbox_0_#{idx}" name="checkbox_0"></input>))
+        end
+      end
+      it "renders label" do
+        options.each.with_index do |option, idx|
+          expect(subject).to include(%(<label for="checkbox_0_#{idx}">#{option}</label>))          
+        end
+      end
+    end
+
+    context "radio buttons" do
+      subject { html 'radio.fmd' }
+
+      it "renders radio input" do
         options.each.with_index do |option, idx|
           expect(subject).to include(%(<input type="radio" id="radio_0_#{idx}" name="radio_0"></input>))
         end
@@ -39,6 +55,8 @@ describe Kramdown::Parser::Formdown do
           expect(subject).to include(%(<label for="radio_0_#{idx}">#{option}</label>))          
         end
       end
+
+      it "renders when indented in a li/ol list"
 
       # TODO - Group radio buttons and infer some sort of name that can
       # be mapped back into the document... like `radio-#{radio_instance}`
@@ -62,12 +80,13 @@ describe Kramdown::Parser::Formdown do
       #   expect(subject).to include('<input type="radio" name="radio[0]" id="radio_0_1" checked></input>')
       # end
     end
-  end
 
-  context "formset" do
-    subject { html 'radio.fmd' }
-    it "is in formset" do
-      expect(subject).to match(/<fieldset name="fieldset_0">(.+?)<\/fieldset>/m)
+    context "formset" do
+      subject { html 'radio.fmd' }
+      it "is in formset" do
+        expect(subject).to match(/<fieldset name="fieldset_0">(.+?)<\/fieldset>/m)
+      end
     end
+
   end
 end

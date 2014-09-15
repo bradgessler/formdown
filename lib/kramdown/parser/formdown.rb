@@ -14,14 +14,13 @@ module Kramdown
     class Formdown < Kramdown::Parser::Kramdown
       def initialize(source, options)
         super
-        @span_parsers.unshift :text_fields, :text_areas, :checkboxes, :buttons, :radio_buttons
+        @span_parsers.unshift :text_fields, :text_areas, :buttons, :options_field
       end
 
       require "kramdown/parser/formdown/text_field"
       require "kramdown/parser/formdown/text_area"
-      require "kramdown/parser/formdown/checkbox_field"
-      require "kramdown/parser/formdown/radio_button_field"
       require "kramdown/parser/formdown/button"
+      require "kramdown/parser/formdown/options_field"
     end
   end
 end
