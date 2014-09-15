@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Kramdown::Parser::Formdown do
-  context "regexp", focus: false do
+  context "regexp" do
     context "RADIO_BUTTON_FIELD_START" do
       subject { Kramdown::Parser::Formdown::RADIO_BUTTON_FIELD_START }
       it "matches () for start of radio button" do
@@ -24,14 +24,20 @@ describe Kramdown::Parser::Formdown do
 
   context "radio button" do
     subject { html 'radio.fmd' }
+    let(:options) do 
+      ['Eat a potato', 'Bang my head against the wall', 'Do jumping jacks']
+    end
+
     context "single line" do
       it "renders radio button input" do
-        expect(subject).to include(%(<input type="radio" id="radio_1"></input>))
+        options.each.with_index do |option, idx|
+          expect(subject).to include(%(<input type="radio" id="radio_0_#{idx}" name="radio_0"></input>))
+        end
       end
       it "renders label" do
-        expect(subject).to include(%(<label for="radio_1">Eat a potato</label>))
-        expect(subject).to include(%(<label for="radio_2">Bang my head against the all</label>))
-        expect(subject).to include(%(<label for="radio_3">Do jumping jacks</label>))
+        options.each.with_index do |option, idx|
+          expect(subject).to include(%(<label for="radio_0_#{idx}">#{option}</label>))          
+        end
       end
 
       # TODO - Group radio buttons and infer some sort of name that can
@@ -55,6 +61,13 @@ describe Kramdown::Parser::Formdown do
       #   pending "check forms with *, x, or X"
       #   expect(subject).to include('<input type="radio" name="radio[0]" id="radio_0_1" checked></input>')
       # end
+    end
+  end
+
+  context "formset" do
+    subject { html 'radio.fmd' }
+    it "is in formset" do
+      expect(subject).to match(/<fieldset name="fieldset_0">(.+?)<\/fieldset>/m)
     end
   end
 end
